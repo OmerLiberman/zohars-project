@@ -3,29 +3,34 @@ import React, { useState, useEffect } from 'react';
 import Clip from './Clip';
 
 
-const MainGrid = ({ gridsDisplayed }) => {
+const MainGrid = ({ gridsDisplayedPercentage }) => {
   const rows = 6;
   const columns = 10;
 
-  const [coloredIndexes, setColoredIndexes] = useState([]);
-  const [notColoredIndexes, setNotColoredIndexes] = useState([]);
-  const [clips, setClips] = useState([]);
+  // const [coloredIndexes, setColoredIndexes] = useState([]);
+  // const [notColoredIndexes, setNotColoredIndexes] = useState([]);
+  // const [clips, setClips] = useState([]);
 
-  useEffect(() => {
-    // randomize indexes
+  // useEffect(() => {
+  //   // randomize indexes
     
-  }, []);
+  // }, []);
+
+  useEffect(() => {}, [gridsDisplayedPercentage]);
 
 
   const subGrids = [];
   for (let r = 0; r < rows; r++) {
     let row = [];
     for (let c = 0; c < columns; c++) {
+      let ran = Math.random();
+      let appear = Boolean(ran <= gridsDisplayedPercentage);
+
       row.push(
         <Clip 
           index={ (r * columns) + c + 1 }
           background={ 'grey' }
-          appear={true}
+          appear={appear}
         />
       )
     }

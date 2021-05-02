@@ -25,8 +25,9 @@ const Clip = ({ appear, index, background }) => {
 
   let indexToAppear = (index < 10) ? `00${index}` : `0${index}`;
 
+  let style = !appear ? { backgroundColor: background, minHeight: 80, minWidth: 80, opacity: 0 } : { backgroundColor: background, minHeight: 80, minWidth: 80 }
+
   return (
-      appear &&  
       <div 
         onClick={() => setOpenDialog(true)}
       >
@@ -42,8 +43,12 @@ const Clip = ({ appear, index, background }) => {
           > 
             | {indexToAppear} 
           </div>
-          <div style={{ backgroundColor: background, minHeight: 80, minWidth: 80 }}>
+
+          {/* Image */}
+          <div style={style}>
+
           </div>
+          {/* Image */}
       </div>
   )
 }
